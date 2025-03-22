@@ -1,0 +1,70 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitAnswer.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFormAnswer *FormAnswer;
+//---------------------------------------------------------------------------
+__fastcall TFormAnswer::TFormAnswer(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+//int task1(std::vector<std::vector<float>> matrix, int n, int m);
+//int task2(std::vector<std::vector<float>> matrix, int n, int m);
+
+std::vector<bool> task(std::vector<std::vector<float>> matrix);
+
+void __fastcall TFormAnswer::ButtonAnswerClick(TObject *Sender)
+{
+	FormAnswer->LabelComment->Caption = "Mode: " + (AnsiString)ut.matrix[1][0];   //OKRightDlg->mode;
+	UserTask ut(0, 0);
+	ut.n = DataInput->StringGrid->RowCount;
+	ut.m = DataInput->StringGrid->ColCount;
+	ut.createVect();
+	for (int i = 0; i < ut.n; i++) {
+		for (int j = 0; j < ut.m; j++) {
+			//ut.matrix[j][i] = (DataInput->StringGrid->Cells[i][j] != "") ?
+			// StrToFloat(DataInput->StringGrid->Cells[i][j]) : 0;
+			if (DataInput->StringGrid->Cells[j][i] != "") {
+				ut.matrix[i].push_back(StrToFloat(DataInput->StringGrid->Cells[j][i]));
+			}
+		}
+	}
+
+	std::vector<bool> ans = task(ut.matrix);
+	AnsiString s = "";
+	for (int i = 0; i < ans.size(); i++) {
+		if (ans[i]) { s += (AnsiString)ans[i] + " "; }
+    }
+
+	if (s == "") {
+		s = "None";
+	}
+
+	LabelAnswer->Caption = "Среднее арифметическое меньше нуля в строках: " + s;
+
+
+	/*int ans = -2;
+	if (OKRightDlg->mode) {
+		ans = task2(ut.matrix, ut.n, ut.m);
+		LabelAnswer->Caption = "Zero elems in even cols: " + (AnsiString)ans;
+	}   else {
+		ans = task1(ut.matrix, ut.n, ut.m);
+		LabelAnswer->Caption = "Zero string index: " + (AnsiString)ans;
+	} */
+	//LabelAnswer->Caption = ans;
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormAnswer::ButtonCloseClick(TObject *Sender)
+{
+	LabelAnswer->Caption = "...";
+    LabelAnswer->Caption = "...";
+	Close();
+}
+//---------------------------------------------------------------------------

@@ -1,0 +1,35 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "UnitTask.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+bool negativeString(std::vector<float> s) {
+	//bool ns = true;
+	int sm = 0;
+	for (int i = 0; i < s.size(); i++) {
+		sm += s[i];
+	}
+
+	return ((sm/s.size()) < 0);   //делить необязательно
+}
+
+int task1(std::vector<std::vector<float>> matrix, int n, int m) {
+	int num = -1;
+	for (int i = 0; i < n && num < 0; i++) {
+		if (zeroString(matrix[i], m)) { num = i; }
+    }
+	return num;
+}
+
+int task2(std::vector<std::vector<float>> matrix, int n, int m) {
+	int counter = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j+=2) {
+			if (matrix[i][j] == 0) { counter++; }
+		}
+	}
+	return counter;
+}
