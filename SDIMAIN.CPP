@@ -32,10 +32,10 @@ void __fastcall TSDIAppForm::AboutClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TSDIAppForm::ModeClick(TObject *Sender)
+/*void __fastcall TSDIAppForm::ModeClick(TObject *Sender)
 {
 	OKRightDlg->Show();
-}
+}*/
 //---------------------------------------------------------------------------
 
 void __fastcall TSDIAppForm::InputDataClick(TObject *Sender)

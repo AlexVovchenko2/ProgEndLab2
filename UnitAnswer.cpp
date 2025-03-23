@@ -18,8 +18,8 @@ __fastcall TFormAnswer::TFormAnswer(TComponent* Owner)
 //int task1(std::vector<std::vector<float>> matrix, int n, int m);
 //int task2(std::vector<std::vector<float>> matrix, int n, int m);
 
-std::vector<bool> task(std::vector<std::vector<float>> matrix);
-bool negativeString(std::vector<float> s);
+std::vector<bool> task(const std::vector<std::vector<float>>& matrix);
+//bool negativeString(std::vector<float> s);
 
 void __fastcall TFormAnswer::ButtonAnswerClick(TObject *Sender)
 {
@@ -37,7 +37,9 @@ void __fastcall TFormAnswer::ButtonAnswerClick(TObject *Sender)
 			}
 		}
 	}
-	FormAnswer->LabelComment->Caption = "Mode: " + (AnsiString)negativeString(ut.matrix[0]);
+	//FormAnswer->LabelComment->Caption = "Mode: " + (AnsiString)negativeString(ut.matrix[0]);
+
+    FormAnswer->LabelComment->Caption = "Решение задачи: ";
 	std::vector<bool> ans = task(ut.matrix);
 	AnsiString s = "";
 	for (int i = 0; i < ans.size(); i++) {

@@ -36,13 +36,12 @@ __published:
 	TMenuItem *Exit1;
 	TMenuItem *Wnd;
 	TMenuItem *InputData;
-	TMenuItem *Mode;
 	TMenuItem *Solvation;
 	TMenuItem *Help;
 	TMenuItem *About;
 	void __fastcall Exit1Click(TObject *Sender);
 	void __fastcall AboutClick(TObject *Sender);
-	void __fastcall ModeClick(TObject *Sender);
+	//void __fastcall ModeClick(TObject *Sender);
 	void __fastcall InputDataClick(TObject *Sender);
 	void __fastcall SolvationClick(TObject *Sender);
 private:

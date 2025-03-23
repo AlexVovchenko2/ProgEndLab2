@@ -40,10 +40,6 @@ object SDIAppForm: TSDIAppForm
         Caption = 'Input data'
         OnClick = InputDataClick
       end
-      object Mode: TMenuItem
-        Caption = 'Mode'
-        OnClick = ModeClick
-      end
       object Solvation: TMenuItem
         Caption = 'Solvation'
         OnClick = SolvationClick

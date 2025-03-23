@@ -11,6 +11,7 @@
 #include <System.Classes.hpp>
 #include <Winapi.Windows.hpp>
 #include <System.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
 //----------------------------------------------------------------------------
 class TAboutBox : public TForm
 {

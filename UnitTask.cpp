@@ -1,12 +1,12 @@
 //---------------------------------------------------------------------------
 
 #pragma hdrstop
-
+#include <numeric>
 #include "UnitTask.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-bool negativeString(std::vector<float> s) {
+/*bool negativeString(std::vector<float> s) {
 	//bool ns = true;
 	float sm = 0;
 	for (int i = 0; i < s.size(); i++) {
@@ -22,8 +22,24 @@ std::vector<bool> task(std::vector<std::vector<float>> matrix) {
 	for (int i = 0; i < matrix.size(); i++) {
 		buff.push_back(negativeString(matrix[i]));
 	}
+	return buff;
+}  */
+
+std::vector<bool> task(const std::vector<std::vector<float>>& matrix) {
+    auto negativeString = [](const std::vector<float>& s) {
+        return std::accumulate(s.begin(), s.end(), 0.0f) / s.size() < 0;
+    };
+
+    std::vector<bool> buff;
+    buff.reserve(matrix.size());
+
+    for (const auto& row : matrix) {
+        buff.push_back(negativeString(row));
+    }
+
     return buff;
 }
+
 
 /*int task1(std::vector<std::vector<float>> matrix, int n, int m) {
 	int num = -1;
